@@ -131,8 +131,12 @@
             const [passwordInput, setPasswordInput] = React.useState('');
             const [passwordError, setPasswordError] = React.useState('');
 
-            // Define a simple hardcoded password for editing
-            const EDIT_PASSWORD = "Bab.28147";
+            // Define the password using character codes for basic obfuscation
+            // This is NOT secure, but makes it less obvious in plain source view.
+            // "Bab.28147" -> [66, 97, 98, 46, 50, 56, 49, 52, 55]
+            const EDIT_PASSWORD_CHAR_CODES = [66, 97, 98, 46, 50, 56, 49, 52, 55];
+            const EDIT_PASSWORD = String.fromCharCode(...EDIT_PASSWORD_CHAR_CODES);
+
 
             // Load data from local storage on initial mount
             React.useEffect(() => {
